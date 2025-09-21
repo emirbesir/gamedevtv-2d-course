@@ -38,6 +38,7 @@ public class Driver : MonoBehaviour
         if (col.CompareTag("Boost"))
         {
             currentMoveSpeed = boostedMoveSpeed;
+            Destroy(col.gameObject);
         }
     }
 
