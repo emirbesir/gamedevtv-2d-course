@@ -12,7 +12,7 @@ public class Delivery : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Pickup"))
+        if (col.CompareTag("Pickup") && !hasPackage)
         {
             hasPackage = true;
             deliveryParticles.Play();

@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class Driver : MonoBehaviour
@@ -6,6 +7,7 @@ public class Driver : MonoBehaviour
     [SerializeField] private float regularMoveSpeed = 5f;
     [SerializeField] private float boostedMoveSpeed = 10f;
     [SerializeField] private float turnSpeed = 200f;
+    [SerializeField] private TMP_Text boostText;
     private float currentMoveSpeed;
 
     private void Start()
@@ -38,6 +40,7 @@ public class Driver : MonoBehaviour
         if (col.CompareTag("Boost"))
         {
             currentMoveSpeed = boostedMoveSpeed;
+            boostText.gameObject.SetActive(true);
             Destroy(col.gameObject);
         }
     }
@@ -45,5 +48,6 @@ public class Driver : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         currentMoveSpeed = regularMoveSpeed;
+        boostText.gameObject.SetActive(false);
     }
 }
