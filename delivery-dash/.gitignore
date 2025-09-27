@@ -98,4 +98,13 @@ InitTestScene*.unity*
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
+# Visual Studio Code settings
 .vscode/
+
+# WebGL build folder
+/[Ww]ebGL [Bb]uilds/
+
+# WebGL build zip file
+connectwebgl.zip
+
+webgl_sharing
