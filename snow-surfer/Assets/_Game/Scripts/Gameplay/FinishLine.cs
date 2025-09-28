@@ -11,10 +11,11 @@ public class FinishLine : MonoBehaviour
     [SerializeField] private ParticleSystem finishParticles;
 
     [Header("Finish Settings")]
-    [SerializeField] private float restartDelay;
+    [SerializeField] private float nextSceneDelay;
 
     [Header("References")]
     [SerializeField] private ScoreManager scoreManager;
+    [SerializeField] private PlayerController playerController;
 
     private Coroutine levelFinishCoroutine;
 
@@ -32,9 +33,10 @@ public class FinishLine : MonoBehaviour
     {
         scoreManager.AddScore(LEVEL_FINISH_SCORE);
         finishParticles.Play();
+        playerController.DisableControls();
 
-        yield return new WaitForSeconds(restartDelay);
+        yield return new WaitForSeconds(nextSceneDelay);
 
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

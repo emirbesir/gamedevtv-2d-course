@@ -6,22 +6,30 @@ public class ScoreManager : MonoBehaviour
     [Header("Text Reference")]
     [SerializeField] private TMP_Text scoreText;
 
-    private int currentScore;
+    [Header("Score Data")]
+    [SerializeField] private FloatVariable scoreVariable;
+
+    [Header("Settings")]
+    [SerializeField] private bool isEndScreen;
 
     private void Start()
     {
-        currentScore = 0;
-        UpdateScoreText();    
+        if (!isEndScreen)
+        {
+            scoreVariable.ResetValue();
+        }
+
+        UpdateScoreText();
     }
 
     private void UpdateScoreText()
     {
-        scoreText.text = $"Score: {currentScore}";
+        scoreText.text = $"Score: {scoreVariable.Value}";
     }
 
     public void AddScore(int scoreToAdd)
     {
-        currentScore += scoreToAdd;
+        scoreVariable.Value += scoreToAdd;
         UpdateScoreText();
     }
 }
