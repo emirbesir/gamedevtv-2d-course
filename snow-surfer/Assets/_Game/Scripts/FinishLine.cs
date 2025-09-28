@@ -6,7 +6,9 @@ public class FinishLine : MonoBehaviour
 {
     private const string PLAYER_LAYER_NAME = "Player";
 
+    [Header("Finish Particles")]
     [SerializeField] private ParticleSystem finishParticles;
+    [Header("Finish Settings")]
     [SerializeField] private float restartDelay = 1f;
 
     private void OnTriggerEnter2D(Collider2D collision)

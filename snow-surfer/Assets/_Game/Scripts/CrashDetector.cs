@@ -6,7 +6,9 @@ public class CrashDetector : MonoBehaviour
 {
     private const string FLOOR_LAYER_NAME = "Floor";
 
+    [Header("Crash Particles")]
     [SerializeField] private ParticleSystem crashParticles;
+    [Header("Crash Settings")]
     [SerializeField] private float restartDelay = 1f;
 
     private void OnTriggerEnter2D(Collider2D collision)
