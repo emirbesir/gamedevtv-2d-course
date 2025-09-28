@@ -4,23 +4,33 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
+    private const int FLIP_SCORE = 100;
+
     [Header("Movement Settings")]
-    [SerializeField] private float torquePower = 1f;
+    [SerializeField] private float torquePower;
 
     [Header("Boost Settings")]
     [SerializeField] private SurfaceEffector2D surfaceEffector;
-    [SerializeField] private float baseMoveSpeed = 18f;
-    [SerializeField] private float boostedMoveSpeed = 24f;
+    [SerializeField] private float baseMoveSpeed;
+    [SerializeField] private float boostedMoveSpeed;
 
-    private bool CanControlPlayer = true;
+    [Header("References")]
+    [SerializeField] private ScoreManager scoreManager;
+
     private InputAction moveAction;
     private Rigidbody2D rb;
+    private bool CanControlPlayer;
+    private float previousRotation;
+    private float totalRotation;
+    private int flipCount;
 
 
     private void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
         rb = GetComponent<Rigidbody2D>();
+        CanControlPlayer = true;
+        flipCount = 0;
     }
 
     private void Update()
@@ -30,6 +40,7 @@ public class PlayerController : MonoBehaviour
         {
             MovePlayer(moveInput.x);
             BoostPlayer(moveInput.y);
+            CalculateFlips();
         }
     }
 
@@ -48,6 +59,22 @@ public class PlayerController : MonoBehaviour
         {
             surfaceEffector.speed = baseMoveSpeed;
         }
+    }
+
+    private void CalculateFlips()
+    {
+        float currentRotation = transform.rotation.eulerAngles.z;
+
+        totalRotation += Mathf.DeltaAngle(previousRotation, currentRotation);
+
+        if (totalRotation >= 360 || totalRotation <= -360)
+        {
+            totalRotation = 0;
+            flipCount++;
+            scoreManager.AddScore(FLIP_SCORE);
+        }
+
+        previousRotation = currentRotation;
     }
 
     public void DisableControls()
