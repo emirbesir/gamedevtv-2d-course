@@ -6,6 +6,7 @@ public class FinishLine : MonoBehaviour
 {
     private const string PLAYER_LAYER_NAME = "Player";
 
+    [SerializeField] private ParticleSystem finishParticles;
     [SerializeField] private float restartDelay = 1f;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -19,7 +20,9 @@ public class FinishLine : MonoBehaviour
     }
 
     private IEnumerator RestartLevel()
-    {
+    {   
+        finishParticles.Play();
+        
         yield return new WaitForSeconds(restartDelay);
 
         SceneManager.LoadScene(0);

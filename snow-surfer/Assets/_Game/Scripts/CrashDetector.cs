@@ -6,6 +6,7 @@ public class CrashDetector : MonoBehaviour
 {
     private const string FLOOR_LAYER_NAME = "Floor";
 
+    [SerializeField] private ParticleSystem crashParticles;
     [SerializeField] private float restartDelay = 1f;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -19,7 +20,9 @@ public class CrashDetector : MonoBehaviour
     }
 
     private IEnumerator RestartLevel()
-    {
+    {   
+        crashParticles.Play();
+        
         yield return new WaitForSeconds(restartDelay);
 
         SceneManager.LoadScene(0);
