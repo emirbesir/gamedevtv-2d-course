@@ -5,10 +5,8 @@ public class ScoreManager : MonoBehaviour
 {   
     [Header("Text Reference")]
     [SerializeField] private TMP_Text scoreText;
-
     [Header("Score Data")]
     [SerializeField] private FloatVariable scoreVariable;
-
     [Header("Settings")]
     [SerializeField] private bool isEndScreen;
 

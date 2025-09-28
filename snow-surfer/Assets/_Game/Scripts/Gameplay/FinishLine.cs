@@ -9,10 +9,8 @@ public class FinishLine : MonoBehaviour
 
     [Header("Finish Particles")]
     [SerializeField] private ParticleSystem finishParticles;
-
     [Header("Finish Settings")]
     [SerializeField] private float nextSceneDelay;
-
     [Header("References")]
     [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private PlayerController playerController;

@@ -5,7 +5,6 @@ public class CharacterSelectManager : MonoBehaviour
     [Header("Characters")]
     [SerializeField] private GameObject dinoSprite;
     [SerializeField] private GameObject frogSprite;
-
     [Header("UI Elements")]
     [SerializeField] private GameObject scoreScreen;
 

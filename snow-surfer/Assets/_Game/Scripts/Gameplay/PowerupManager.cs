@@ -6,7 +6,6 @@ public class PowerupManager : MonoBehaviour
 
     [Header("Powerup Config")]
     [SerializeField] private PowerupSO powerup;
-
     [Header("References")]
     [SerializeField] private PlayerController playerController;
     [SerializeField] private SpriteRenderer powerupSprite;

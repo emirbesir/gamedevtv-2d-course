@@ -8,15 +8,12 @@ public class PlayerController : MonoBehaviour
 
     [Header("Movement Settings")]
     [SerializeField] private float torquePower;
-
     [Header("Boost Settings")]
     [SerializeField] private SurfaceEffector2D surfaceEffector;
     [SerializeField] private float baseMoveSpeed;
     [SerializeField] private float boostedMoveSpeed;
-
     [Header("Powerup Settings")]
     [SerializeField] private ParticleSystem powerupParticles;
-
     [Header("References")]
     [SerializeField] private ScoreManager scoreManager;
 
