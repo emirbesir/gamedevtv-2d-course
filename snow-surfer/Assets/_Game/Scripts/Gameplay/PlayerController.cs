@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float baseMoveSpeed;
     [SerializeField] private float boostedMoveSpeed;
 
+    [Header("Powerup Settings")]
+    [SerializeField] private ParticleSystem powerupParticles;
+
     [Header("References")]
     [SerializeField] private ScoreManager scoreManager;
 
@@ -22,15 +25,14 @@ public class PlayerController : MonoBehaviour
     private bool CanControlPlayer;
     private float previousRotation;
     private float totalRotation;
-    private int flipCount;
-
+    private int activePowerupCount;
 
     private void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
         rb = GetComponent<Rigidbody2D>();
         CanControlPlayer = true;
-        flipCount = 0;
+        activePowerupCount = 0;
     }
 
     private void Update()
@@ -70,11 +72,46 @@ public class PlayerController : MonoBehaviour
         if (totalRotation >= 360 || totalRotation <= -360)
         {
             totalRotation = 0;
-            flipCount++;
             scoreManager.AddScore(FLIP_SCORE);
         }
 
         previousRotation = currentRotation;
+    }
+
+    public void ApplyPowerup(PowerupSO powerup)
+    {   
+        activePowerupCount++;
+        powerupParticles.Play();
+
+        if (powerup.PowerupName == "speed")
+        {
+            baseMoveSpeed += powerup.ValueChange;
+            boostedMoveSpeed += powerup.ValueChange;
+        }
+        else if (powerup.PowerupName == "torque")
+        {
+            torquePower += powerup.ValueChange;
+        }
+    }
+
+    public void DeactivatePowerup(PowerupSO powerup)
+    {   
+        activePowerupCount--;
+        if (activePowerupCount <= 0)
+        {
+            powerupParticles.Stop();
+            activePowerupCount = 0;
+        }
+
+        if (powerup.PowerupName == "speed")
+        {
+            baseMoveSpeed -= powerup.ValueChange;
+            boostedMoveSpeed -= powerup.ValueChange;
+        }
+        else if (powerup.PowerupName == "torque")
+        {
+            torquePower -= powerup.ValueChange;
+        }
     }
 
     public void DisableControls()
