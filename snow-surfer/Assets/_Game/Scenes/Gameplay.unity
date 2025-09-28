@@ -12053,6 +12053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crashParticles: {fileID: 114678875}
   restartDelay: 1
+  playerController: {fileID: 300247393}
 --- !u!58 &300247395
 CircleCollider2D:
   m_ObjectHideFlags: 0

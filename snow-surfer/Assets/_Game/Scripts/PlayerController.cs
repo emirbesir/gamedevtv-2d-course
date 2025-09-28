@@ -12,8 +12,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float baseMoveSpeed = 18f;
     [SerializeField] private float boostedMoveSpeed = 24f;
 
+    private bool CanControlPlayer = true;
     private InputAction moveAction;
     private Rigidbody2D rb;
+
 
     private void Start()
     {
@@ -24,8 +26,11 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Vector2 moveInput = moveAction.ReadValue<Vector2>();
-        MovePlayer(moveInput.x);
-        BoostPlayer(moveInput.y);
+        if (CanControlPlayer)
+        {
+            MovePlayer(moveInput.x);
+            BoostPlayer(moveInput.y);
+        }
     }
 
     private void MovePlayer(float xInput)
@@ -43,5 +48,10 @@ public class PlayerController : MonoBehaviour
         {
             surfaceEffector.speed = baseMoveSpeed;
         }
+    }
+
+    public void DisableControls()
+    {
+        CanControlPlayer = false;
     }
 }
