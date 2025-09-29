@@ -1,8 +1,8 @@
 <div align="center">
 
-# Gamedev.tv Complete Unity 2D Developer Course
+# Unity 2D Developer Course Games
 
-This repository contains games and prototypes from "Complete Unity 2D Developer: Design & Develop Games in Unity 6 using C#" course made by Gamedev.tv
+This repository contains games built with C# and Unity Engine by following [Gamedev.tv's Complete Unity 2D Developer: Design & Develop Games in Unity 6 using C# course.](https://www.gamedev.tv/courses/unity6-complete-2d)
 
 ![Last Commit](https://img.shields.io/github/last-commit/emirbesir/gamedevtv-2d-course?style=flat&logo=git&logoColor=white&color=0080ff)
 ![Top Language](https://img.shields.io/github/languages/top/emirbesir/gamedevtv-2d-course?style=flat&color=0080ff)
