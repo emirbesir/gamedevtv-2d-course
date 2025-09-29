@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Torque
   m_EditorClassIdentifier: 
   powerupName: torque
-  valueChange: 50
-  duration: 2
+  valueChange: 500
+  duration: 3

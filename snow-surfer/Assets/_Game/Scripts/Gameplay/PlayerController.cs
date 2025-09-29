@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private float previousRotation;
     private float totalRotation;
     private int activePowerupCount;
+    private Vector2 cachedMoveInput;
 
     private void Start()
     {
@@ -34,12 +35,19 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Vector2 moveInput = moveAction.ReadValue<Vector2>();
+        cachedMoveInput = moveAction.ReadValue<Vector2>();
         if (CanControlPlayer)
         {
-            MovePlayer(moveInput.x);
-            BoostPlayer(moveInput.y);
+            BoostPlayer(cachedMoveInput.y);
             CalculateFlips();
+        }
+    }
+    
+    private void FixedUpdate()
+    {
+        if (CanControlPlayer)
+        {
+            MovePlayer(cachedMoveInput.x);
         }
     }
 
