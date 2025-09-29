@@ -12,6 +12,11 @@ _Made and Tested with **Unity 6000.1.8f1**_
 
 </div>
 
+## Games (Itch.io Playable Links)
+
+- [Delivery Dash](https://calippooo.itch.io/delivery-dash)
+- [Snow Surfer](https://calippooo.itch.io/snow-surfer)
+
 ## Screenshots
 
 ![Screenshot 1](docs/img/delivery-dash-cover.png)
