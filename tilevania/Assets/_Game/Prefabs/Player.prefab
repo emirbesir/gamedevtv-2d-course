@@ -77,9 +77,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -239846473
+  m_SortingLayer: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: -7894484093430313499, guid: 9ec29175c66ff774cb147702fbaa2fc4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -287,8 +287,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc124eca8470958439e672a3907bc29f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  moveSpeed: 6
+  walkSpeed: 6
   jumpForce: 6
+  climbSpeed: 3
+  climbingLayer:
+    serializedVersion: 2
+    m_Bits: 128
   groundCheck: {fileID: 4726798919268180053}
   groundCheckRadius: 0.15
   groundLayer:
