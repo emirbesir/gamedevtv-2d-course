@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,11 +12,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 6f;
     [Header("Climb Settings")]
     [SerializeField] private float climbSpeed = 3f;
-    [SerializeField] private LayerMask climbingLayer;
     [Header("Ground Check Settings")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius = 0.15f;
-    [SerializeField] private LayerMask groundLayer;
+    [Header("Death Settings")]
+    [SerializeField] private Vector2 deathKick;
+    [SerializeField] private Color deathColor;
     [Header("References")]
     [SerializeField] private GameObject playerVisual;
 
@@ -24,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isMovingVertically;
     private bool isTouchingLadder;
     private float gravityScaleAtStart;
+    private bool isAlive;
 
     private Rigidbody2D rb;
     private CapsuleCollider2D col;
@@ -39,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
         anim = playerVisual.GetComponent<Animator>();
 
         gravityScaleAtStart = rb.gravityScale;
+        isAlive = true;
     }
 
     private void FixedUpdate()
@@ -48,6 +52,14 @@ public class PlayerMovement : MonoBehaviour
         ClimbLadders();
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if ((1 << collision.gameObject.layer) == Constants.Layers.Enemy && !isAlive)
+        {
+            Die();
+        }
+    }
+
     private void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
@@ -55,25 +67,31 @@ public class PlayerMovement : MonoBehaviour
 
     private void Walk()
     {
+        if (!isAlive) return;
+
         rb.linearVelocity = new Vector2(moveInput.x * walkSpeed, rb.linearVelocityY);
 
         isMovingHorizontally = Mathf.Abs(rb.linearVelocityX) > Mathf.Epsilon;
-        anim.SetBool(Constants.PlayerAnimations.IS_WALKING, isMovingHorizontally);
+        anim.SetBool(Constants.PlayerAnimations.IsWalking, isMovingHorizontally);
     }
     
     private void FlipSprite()
     {
+        if (!isAlive) return;
+
         if (isMovingHorizontally) rend.flipX = moveInput.x < 0f;
     }
 
     private void ClimbLadders()
     {
-        isTouchingLadder = col.IsTouchingLayers(climbingLayer);
+        if (!isAlive) return;
+
+        isTouchingLadder = col.IsTouchingLayers(Constants.Layers.Climbing);
 
         if (!isTouchingLadder)
         {
             rb.gravityScale = gravityScaleAtStart;
-            anim.SetBool(Constants.PlayerAnimations.IS_CLIMBING, false);
+            anim.SetBool(Constants.PlayerAnimations.IsClimbing, false);
             return;
         }
 
@@ -82,18 +100,28 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = new Vector2(rb.linearVelocityX, moveInput.y * climbSpeed);
 
         isMovingVertically = Mathf.Abs(rb.linearVelocityY) > Mathf.Epsilon;
-        anim.SetBool(Constants.PlayerAnimations.IS_CLIMBING, isMovingVertically);
+        anim.SetBool(Constants.PlayerAnimations.IsClimbing, isMovingVertically);
     }
 
     private void OnJump()
     {
         if (!IsGrounded()) return;
+        if (!isAlive) return;
 
         rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpForce);
     }
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, Constants.Layers.Ground);
+    }
+
+    private void Die()
+    {
+        isAlive = false;
+        anim.SetTrigger(Constants.PlayerAnimations.Dying);
+        rb.linearVelocity = deathKick;
+        rend.color = deathColor;
+        Time.timeScale = 0.5f;
     }
 }
