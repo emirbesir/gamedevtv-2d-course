@@ -101215,22 +101215,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4451315970573651628, guid: 3fd127f20ba011840b61e456c75fab08, type: 3}
-      propertyPath: deathKick.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4451315970573651628, guid: 3fd127f20ba011840b61e456c75fab08, type: 3}
-      propertyPath: deathKick.y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4451315970573651628, guid: 3fd127f20ba011840b61e456c75fab08, type: 3}
-      propertyPath: deathColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4451315970573651628, guid: 3fd127f20ba011840b61e456c75fab08, type: 3}
-      propertyPath: deathColor.r
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6074854882097440638, guid: 3fd127f20ba011840b61e456c75fab08, type: 3}
       propertyPath: m_Name
       value: Player
@@ -101331,14 +101315,6 @@ PrefabInstance:
     - target: {fileID: 1889998763952231461, guid: ce1e48427c61f1940a7b7002b0f46310, type: 3}
       propertyPath: m_Name
       value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 1889998763952231461, guid: ce1e48427c61f1940a7b7002b0f46310, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7648424388101955384, guid: ce1e48427c61f1940a7b7002b0f46310, type: 3}
-      propertyPath: m_Layer
-      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
