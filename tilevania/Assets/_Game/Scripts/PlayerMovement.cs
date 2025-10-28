@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
     private bool isMovingHorizontally;
     private bool isMovingVertically;
+    private bool isTouchingLadder;
     private float gravityScaleAtStart;
 
     private Rigidbody2D rb;
@@ -67,7 +68,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void ClimbLadders()
     {
-        if (!col.IsTouchingLayers(climbingLayer))
+        isTouchingLadder = col.IsTouchingLayers(climbingLayer);
+
+        if (!isTouchingLadder)
         {
             rb.gravityScale = gravityScaleAtStart;
             anim.SetBool(Constants.PlayerAnimations.IS_CLIMBING, false);

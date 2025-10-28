@@ -196,7 +196,7 @@ Rigidbody2D:
   m_Mass: 70
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -287,8 +287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc124eca8470958439e672a3907bc29f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  walkSpeed: 6
-  jumpForce: 6
+  walkSpeed: 7
+  jumpForce: 9
   climbSpeed: 3
   climbingLayer:
     serializedVersion: 2
