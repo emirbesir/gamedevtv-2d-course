@@ -58,9 +58,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &6216651251856592367
 BoxCollider2D:
@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
   speed: 10
+  bulletVisual: {fileID: 5758094127430385566}
 --- !u!1 &5758094127430385566
 GameObject:
   m_ObjectHideFlags: 0
