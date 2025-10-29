@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 1149135550260756243}
   - component: {fileID: 1424576628714392675}
   - component: {fileID: 4451315970573651628}
+  - component: {fileID: 7966548393543230276}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -294,4 +295,19 @@ MonoBehaviour:
   groundCheckRadius: 0.15
   deathKick: {x: 5, y: 10}
   deathColor: {r: 0.5, g: 0, b: 0, a: 1}
+  playerVisual: {fileID: 3972941337306211413}
+--- !u!114 &7966548393543230276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6074854882097440638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061defb8f8ab5634fbede3bcf88ffa06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  bulletPrefab: {fileID: 2683560161359606325, guid: 5f5b4ae42fa1e31438b781973043cccd, type: 3}
+  attackCooldown: 0.5
   playerVisual: {fileID: 3972941337306211413}

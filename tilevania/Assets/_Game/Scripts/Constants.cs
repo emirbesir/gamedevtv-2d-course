@@ -23,6 +23,7 @@ public static class Constants
         public const string IsWalking = "IsWalking";
         public const string IsClimbing = "IsClimbing";
         public const string Dying = "Dying";
+        public const string Attacking = "Attacking";
     }
 
     public static class Enemy
