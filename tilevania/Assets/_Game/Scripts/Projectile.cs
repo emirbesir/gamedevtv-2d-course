@@ -1,26 +1,29 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Bullet : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
-    [Header("Bullet Settings")]
-    [SerializeField] private float speed = 10f;
+    [Header("Projectile Settings")]
+    [SerializeField] private float projectileSpeed = 10f;
     [Header("References")]
-    [SerializeField] private GameObject bulletVisual;
+    [SerializeField] private GameObject projectileVisual;
 
-    private int direction;
+    // State
+    private int projectileDirection;
+
+    // References
     private Rigidbody2D rb;
     private SpriteRenderer rend;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        rend = bulletVisual.GetComponent<SpriteRenderer>();
+        rend = projectileVisual.GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = direction * speed * Vector2.right;
+        Move();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,9 +43,14 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    private void Move()
+    {
+        rb.linearVelocity = projectileDirection * projectileSpeed * Vector2.right;
+    }
+
     public void SetDirection(int dir)
     {
-        direction = dir;
-        rend.flipX = direction < 0;
+        projectileDirection = dir;
+        rend.flipX = projectileDirection < 0;
     }
 }

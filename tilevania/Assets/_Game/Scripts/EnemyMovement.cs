@@ -1,15 +1,17 @@
 using UnityEngine;
-using UnityEngine.Scripting.APIUpdating;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class EnemyMovement : MonoBehaviour
 {
-    [Header("Config")]
+    [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 4f;
     [Header("References")]
     [SerializeField] private GameObject enemyVisual;
 
+    // State
     private int moveDirection = 1;
+    
+    // References
     private Rigidbody2D rb;
     private SpriteRenderer rend;
 
@@ -31,13 +33,18 @@ public class EnemyMovement : MonoBehaviour
 
         if (hitWall)
         {
-            moveDirection *= -1;
-            rend.flipX = moveDirection < 0;
+            ChangeDirection();
         }
     }
 
     private void Move()
     {
-        rb.linearVelocity = new Vector2(moveSpeed * moveDirection, 0f);
+        rb.linearVelocity = moveDirection * moveSpeed * Vector2.right;
+    }
+
+    private void ChangeDirection()
+    {
+        moveDirection *= -1;
+        rend.flipX = moveDirection < 0;
     }
 }
