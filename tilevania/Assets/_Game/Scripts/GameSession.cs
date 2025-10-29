@@ -1,17 +1,27 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameSession : MonoBehaviour
 {
-    [Header("Session Settings")]
+    [Header("Lives Settings")]
     [SerializeField] private int startingLives = 3;
     [SerializeField] private float respawnDelay = 2f;
     [Header("References")]
     [SerializeField] private PlayerHealth playerHealth;
 
-    private int currentLives;
+    // Events
+    public event Action<int> OnLivesChanged;
+    public event Action<int> OnScoreChanged;
 
+    // State
+    private int currentLives;
+    public int CurrentLives => currentLives;
+    private int currentScore;
+    public int CurrentScore => currentScore;
+
+    // Singleton
     public static GameSession Instance { get; private set; }
 
     private void Awake()
@@ -27,6 +37,7 @@ public class GameSession : MonoBehaviour
         }
 
         currentLives = startingLives;
+        currentScore = 0;
     }
 
     private void Start()
@@ -49,12 +60,12 @@ public class GameSession : MonoBehaviour
     private void FindAndSubscribeToPlayer()
     {
         UnsubscribeFromPlayer();
-        
+
         if (playerHealth == null)
         {
             playerHealth = FindFirstObjectByType<PlayerHealth>();
         }
-        
+
         if (playerHealth != null)
         {
             playerHealth.OnPlayerDied += HandlePlayerDeath;
@@ -72,7 +83,8 @@ public class GameSession : MonoBehaviour
     private void HandlePlayerDeath()
     {
         Time.timeScale = 0.5f;
-        
+        OnLivesChanged?.Invoke(currentLives - 1);
+
         if (currentLives > 1)
         {
             StartCoroutine(ResetLevel(currentLives - 1, SceneManager.GetActiveScene().buildIndex));
@@ -80,6 +92,8 @@ public class GameSession : MonoBehaviour
         else
         {
             StartCoroutine(ResetLevel(startingLives, 0));
+            ResetScore();
+            ScenePersist.Instance.ResetScenePersist();
         }
     }
 
@@ -87,16 +101,29 @@ public class GameSession : MonoBehaviour
     {
         yield return new WaitForSeconds(respawnDelay);
         currentLives = lives;
+        OnLivesChanged?.Invoke(currentLives);
         SceneManager.LoadScene(sceneIndex);
-        
+
         yield return null;
         FindAndSubscribeToPlayer();
-        
+
         if (playerHealth != null)
         {
             playerHealth.Revive();
         }
-        
+
         Time.timeScale = 1f;
+    }
+
+    public void AddToScore(int points)
+    {
+        currentScore += points;
+        OnScoreChanged?.Invoke(currentScore);
+    }
+
+    public void ResetScore()
+    {
+        currentScore = 0;
+        OnScoreChanged?.Invoke(currentScore);
     }
 }

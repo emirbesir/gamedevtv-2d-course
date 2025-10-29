@@ -19,6 +19,7 @@ public class ExitDoor : MonoBehaviour
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
             SceneManager.LoadScene(nextSceneIndex);
+            ScenePersist.Instance.ResetScenePersist();
         }
     }
 }

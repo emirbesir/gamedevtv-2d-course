@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class CoinPickup : MonoBehaviour
 {
+    [Header("Coin Settings")]
+    [SerializeField] private int coinValue = 1;
     [Header("SFX")]
     [SerializeField] private AudioClip coinPickupSFX;
     [Header("References")]
@@ -33,6 +35,7 @@ public class CoinPickup : MonoBehaviour
 
     private void CollectCoin()
     {
+        GameSession.Instance.AddToScore(coinValue);
         hasBeenCollected = true;
         rend.enabled = false;
         audioSource.PlayOneShot(coinPickupSFX);
