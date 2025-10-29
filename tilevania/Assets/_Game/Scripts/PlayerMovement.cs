@@ -54,7 +54,9 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if ((1 << collision.gameObject.layer) == Constants.Layers.Enemy && !isAlive)
+        if (!isAlive) return;
+        if (collision.gameObject.layer == Constants.LayerIndices.EnemyIndex 
+            || collision.gameObject.layer == Constants.LayerIndices.HazardsIndex)
         {
             Die();
         }
@@ -86,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isAlive) return;
 
-        isTouchingLadder = col.IsTouchingLayers(Constants.Layers.Climbing);
+        isTouchingLadder = col.IsTouchingLayers(Constants.LayerMasks.Climbing);
 
         if (!isTouchingLadder)
         {
@@ -113,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, Constants.Layers.Ground);
+        return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, Constants.LayerMasks.Ground);
     }
 
     private void Die()

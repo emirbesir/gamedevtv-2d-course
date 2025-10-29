@@ -27,7 +27,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void CheckForWalls()
     {
-        bool hitWall = Physics2D.Raycast(transform.position, Vector2.right * moveDirection, Constants.Enemy.RayLength, Constants.Layers.Ground);
+        bool hitWall = Physics2D.Raycast(transform.position, Vector2.right * moveDirection, Constants.Enemy.RayLength, Constants.LayerMasks.Ground);
 
         if (hitWall)
         {

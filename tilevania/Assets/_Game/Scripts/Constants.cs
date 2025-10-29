@@ -2,11 +2,20 @@ using UnityEngine;
 
 public static class Constants
 {
-    public static class Layers
+    public static class LayerIndices
     {
-        public static readonly int Ground = 1 << LayerMask.NameToLayer("Ground");
-        public static readonly int Climbing = 1 << LayerMask.NameToLayer("Climbing");
-        public static readonly int Enemy = 1 << LayerMask.NameToLayer("Enemy");
+        public static readonly int GroundIndex = LayerMask.NameToLayer("Ground");
+        public static readonly int ClimbingIndex = LayerMask.NameToLayer("Climbing");
+        public static readonly int EnemyIndex = LayerMask.NameToLayer("Enemy");
+        public static readonly int HazardsIndex = LayerMask.NameToLayer("Hazards");
+    }
+
+    public static class LayerMasks
+    {
+        public static readonly int Ground = 1 << LayerIndices.GroundIndex;
+        public static readonly int Climbing = 1 << LayerIndices.ClimbingIndex;
+        public static readonly int Enemy = 1 << LayerIndices.EnemyIndex;
+        public static readonly int HazardsLayerMask = 1 << LayerIndices.HazardsIndex;
     }
 
     public static class PlayerAnimations
