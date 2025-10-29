@@ -5,6 +5,8 @@ public class Projectile : MonoBehaviour
 {
     [Header("Projectile Settings")]
     [SerializeField] private float projectileSpeed = 10f;
+    [SerializeField] private float damage = 1f;
+    [SerializeField] private float lifetime = 10f;
     [Header("References")]
     [SerializeField] private GameObject projectileVisual;
 
@@ -19,6 +21,7 @@ public class Projectile : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         rend = projectileVisual.GetComponent<SpriteRenderer>();
+        Destroy(gameObject, lifetime);
     }
 
     private void FixedUpdate()
@@ -30,7 +33,11 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.layer == Constants.LayerIndices.EnemyIndex)
         {
-            Destroy(collision.gameObject);
+            if (collision.TryGetComponent<EnemyHealth>(out var enemyHealth))
+            {
+                enemyHealth.TakeDamage(damage);
+            }
+            
             Destroy(gameObject);
         }
     }

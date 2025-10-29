@@ -120,8 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 092dd96bb1b17264cac4a29282b083a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  speed: 10
-  bulletVisual: {fileID: 5758094127430385566}
+  projectileSpeed: 10
+  damage: 1
+  projectileVisual: {fileID: 5758094127430385566}
 --- !u!1 &5758094127430385566
 GameObject:
   m_ObjectHideFlags: 0

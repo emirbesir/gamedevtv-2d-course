@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 287687567740712876}
   - component: {fileID: 6913480763514917895}
   - component: {fileID: 9066417942590979412}
+  - component: {fileID: 229871944566367559}
   - component: {fileID: 7354208046433740843}
   m_Layer: 9
   m_Name: Enemy
@@ -98,6 +99,19 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0.04, y: -0.19}
   m_Radius: 0.31
+--- !u!114 &229871944566367559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889998763952231461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225d2a7e3ba851f4f8df5ca3687a38ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  health: 1
 --- !u!114 &7354208046433740843
 MonoBehaviour:
   m_ObjectHideFlags: 0

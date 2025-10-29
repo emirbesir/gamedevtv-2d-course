@@ -24,10 +24,13 @@ public static class Constants
         public const string IsClimbing = "IsClimbing";
         public const string Dying = "Dying";
         public const string Attacking = "Attacking";
+        public const string Jumping = "Jumping";
     }
 
     public static class Enemy
     {
         public const float RayLength = 0.6f;
     }
+
+    public const float DefaultPlayerGravityScale = 2f;
 }

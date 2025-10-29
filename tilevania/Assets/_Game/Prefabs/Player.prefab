@@ -156,8 +156,12 @@ GameObject:
   - component: {fileID: 5884451359125177777}
   - component: {fileID: 1149135550260756243}
   - component: {fileID: 1424576628714392675}
+  - component: {fileID: 660593883211032206}
   - component: {fileID: 4451315970573651628}
   - component: {fileID: 7966548393543230276}
+  - component: {fileID: 9203853766195259248}
+  - component: {fileID: 5794112341617668977}
+  - component: {fileID: 5103951649599121393}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -276,6 +280,21 @@ MonoBehaviour:
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &660593883211032206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6074854882097440638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ebb61fb80e145648a91033d77a3cd94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  deathKick: {x: 5, y: 10}
+  deathColor: {r: 0.6, g: 0, b: 0, a: 1}
+  playerVisual: {fileID: 3972941337306211413}
 --- !u!114 &4451315970573651628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,12 +308,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   walkSpeed: 7
-  jumpForce: 9
-  climbSpeed: 3
-  groundCheck: {fileID: 4726798919268180053}
-  groundCheckRadius: 0.15
-  deathKick: {x: 5, y: 10}
-  deathColor: {r: 0.5, g: 0, b: 0, a: 1}
   playerVisual: {fileID: 3972941337306211413}
 --- !u!114 &7966548393543230276
 MonoBehaviour:
@@ -308,6 +321,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061defb8f8ab5634fbede3bcf88ffa06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  bulletPrefab: {fileID: 2683560161359606325, guid: 5f5b4ae42fa1e31438b781973043cccd, type: 3}
+  projectilePrefab: {fileID: 2683560161359606325, guid: 5f5b4ae42fa1e31438b781973043cccd, type: 3}
   attackCooldown: 0.5
+  playerVisual: {fileID: 3972941337306211413}
+--- !u!114 &9203853766195259248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6074854882097440638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1a027699a4cb13458b950c7067b426d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerJump
+  jumpForce: 10
+  groundCheck: {fileID: 4726798919268180053}
+  groundCheckRadius: 0.15
+--- !u!114 &5794112341617668977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6074854882097440638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b0fdb0218a917543bef10c3529b29d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerClimb
+  climbSpeed: 3
+--- !u!114 &5103951649599121393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6074854882097440638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b87cc6a0850b66e4c8cb8a3d446ede6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimationController
   playerVisual: {fileID: 3972941337306211413}
