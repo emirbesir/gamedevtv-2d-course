@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3286016973017883191}
   - component: {fileID: 4641571856107700694}
   - component: {fileID: 3287010901333992033}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4726798919268180053}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Ground Check Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,9 +162,9 @@ GameObject:
   - component: {fileID: 9203853766195259248}
   - component: {fileID: 5794112341617668977}
   - component: {fileID: 5103951649599121393}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -322,7 +322,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   projectilePrefab: {fileID: 2683560161359606325, guid: 5f5b4ae42fa1e31438b781973043cccd, type: 3}
-  attackCooldown: 0.5
+  projectileSpawnOffset: 0.5
+  attackCooldown: 1
   playerVisual: {fileID: 3972941337306211413}
 --- !u!114 &9203853766195259248
 MonoBehaviour:

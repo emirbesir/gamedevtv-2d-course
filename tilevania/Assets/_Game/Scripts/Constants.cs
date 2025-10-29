@@ -8,6 +8,7 @@ public static class Constants
         public static readonly int ClimbingIndex = LayerMask.NameToLayer("Climbing");
         public static readonly int EnemyIndex = LayerMask.NameToLayer("Enemy");
         public static readonly int HazardsIndex = LayerMask.NameToLayer("Hazards");
+        public static readonly int PlayerIndex = LayerMask.NameToLayer("Player");
     }
 
     public static class LayerMasks
@@ -16,6 +17,7 @@ public static class Constants
         public static readonly int Climbing = 1 << LayerIndices.ClimbingIndex;
         public static readonly int Enemy = 1 << LayerIndices.EnemyIndex;
         public static readonly int HazardsLayerMask = 1 << LayerIndices.HazardsIndex;
+        public static readonly int Player = 1 << LayerIndices.PlayerIndex;
     }
 
     public static class PlayerAnimations
