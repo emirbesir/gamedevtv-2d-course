@@ -10298,6 +10298,64 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7369489616550257209, guid: 8b177cb684429be44ba56dc6f16701a3, type: 3}
   m_PrefabInstance: {fileID: 1665286026}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1715753282 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 660593883211032206, guid: 3fd127f20ba011840b61e456c75fab08, type: 3}
+  m_PrefabInstance: {fileID: 2459842498770794801}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ebb61fb80e145648a91033d77a3cd94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+--- !u!1 &1906805349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1906805351}
+  - component: {fileID: 1906805350}
+  m_Layer: 0
+  m_Name: GameSession
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1906805350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906805349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d06f52e2a3908e409227a374a2ad4a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  startingLives: 3
+  respawnDelay: 1
+  playerHealth: {fileID: 1715753282}
+--- !u!4 &1906805351
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906805349}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2046322247 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3287010901333992033, guid: 3fd127f20ba011840b61e456c75fab08, type: 3}
@@ -26989,3 +27047,4 @@ SceneRoots:
   - {fileID: 2459842498770794801}
   - {fileID: 348175360}
   - {fileID: 7176155186047958193}
+  - {fileID: 1906805351}

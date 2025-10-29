@@ -43,11 +43,18 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         isAlive = false;
-        
-        Time.timeScale = 0.5f;
+
         rb.linearVelocity = deathKick;
         rend.color = deathColor;
 
         OnPlayerDied?.Invoke();
+    }
+    
+    public void Revive()
+    {
+        isAlive = true;
+        
+        rb.linearVelocity = Vector2.zero;
+        rend.color = Color.white;
     }
 }
